@@ -655,7 +655,8 @@ class MongoClientCollectionTest(_CollectionComparisonTest):
                         {'_id': 0, 'a': 1, 'b.c': 1},
                         {'_id': 0, 'a': 0, 'b.c': 0},
                         {'_id': 0, 'a': 1, 'b.c.e': 1}):
-                        # This case should work (at least on mongodb version 3.4.1+), but currently fails in the Travis-CI.
+                        # This case should work (at least on mongodb version 3.4.1+),
+                        # but currently fails in the Travis-CI:
                         # {'_id': 0, 'a': 0, 'b.c': 0, 'b.c.e': 0}):
             self.cmp.compare.find_one({'a': 1}, project)
 
