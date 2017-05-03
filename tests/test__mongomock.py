@@ -655,35 +655,9 @@ class MongoClientCollectionTest(_CollectionComparisonTest):
                         {'_id': 0, 'a': 1, 'b.c': 1},
                         {'_id': 0, 'a': 0, 'b.c': 0},
                         {'_id': 0, 'a': 1, 'b.c.e': 1}):
+                        # This case should work (at least on mongodb version 3.4.1+), but currently fails in the Travis-CI.
                         # {'_id': 0, 'a': 0, 'b.c': 0, 'b.c.e': 0}):
             self.cmp.compare.find_one({'a': 1}, project)
-
-    # def test__find_projection_subdocument_lists1(self):
-    #     self.cmp.do.remove()
-    #     self.cmp.do.insert({'a': 1, 'b': [{'c': 3, 'd': 4}, {'c': 5, 'd': 6}]})
-    #     self.cmp.compare.find_one({'a': 1}, {'_id': 0, 'a': 1, 'b': 1})
-    #
-    #
-    # def test__find_projection_subdocument_lists2(self):
-    #     self.cmp.do.remove()
-    #     self.cmp.do.insert({'a': 1, 'b': [{'c': 3, 'd': 4}, {'c': 5, 'd': 6}]})
-    #     self.cmp.compare.find_one({'a': 1}, {'_id': 0, 'a': 1, 'b.c': 1})
-    #
-    # def test__find_projection_subdocument_lists3(self):
-    #     self.cmp.do.remove()
-    #     self.cmp.do.insert({'a': 1, 'b': [{'c': 3, 'd': 4}, {'c': 5, 'd': 6}]})
-    #     self.cmp.compare.find_one({'a': 1}, {'_id': 0, 'a': 0, 'b.c': 0})
-    #
-    # def test__find_projection_subdocument_lists4(self):
-    #     self.cmp.do.remove()
-    #     self.cmp.do.insert({'a': 1, 'b': [{'c': 3, 'd': 4}, {'c': 5, 'd': 6}]})
-    #     self.cmp.compare.find_one({'a': 1}, {'_id': 0, 'a': 1, 'b.c.e': 1})
-    #
-    # def test__find_projection_subdocument_lists5(self):
-    #     self.cmp.do.remove()
-    #     self.cmp.do.insert({'a': 1, 'b': [{'c': 3, 'd': 4}, {'c': 5, 'd': 6}]})
-    #     self.cmp.compare.find_one({'a': 1}, {'_id': 0, 'a': 0, 'b.c': 0, 'b.c.e': 0})
-
 
     # def test__as_class(self):
     #     class MyDict(dict):
